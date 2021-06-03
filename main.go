@@ -13,6 +13,10 @@ func basic() string {
 	return "World!"
 }
 
+func fred() string {
+	return "World!"
+}
+
 //go:embed frontend/public/build/bundle.js
 var js string
 
@@ -37,14 +41,22 @@ func main() {
 		panic(err)
 	}
 
-	time.Sleep(5)
+	time.Sleep(2 * time.Second)
 
-	isRed, err := client.GetBoolean("/FMSInfo/IsRedAlliance")
-	if err == nil {
+	isRed, err := client.GetBoolean("/bool")
+	if err != nil {
+		fmt.Printf("%s", err)
+	} else {
 		fmt.Printf("---------------------------------------is Red: %v\n", isRed)
 	}
+	_ = app
 
+	//for {
+	//	time.Sleep(5 * time.Second)
+	//}
+
+	app.Bind(client)
 	app.Bind(basic)
-	app.Bind(client.GetBoolean)
+	app.Bind(fred)
 	app.Run()
 }
