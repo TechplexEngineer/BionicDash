@@ -1,0 +1,45 @@
+<script>
+    import Tree from "../low-components/tree.svelte";
+
+    $: tree = [];
+
+    (async () => {
+        let keys = await window.backend.Client.GetSnapshot("");
+        keys = keys.sort()
+        let level = {tree};
+
+        keys.forEach(path => {
+            path.key.split('/').reduce((r, name, i, a) => {
+                if (!r[name]) {
+                    r[name] = {tree: []};
+                    const obj = {name, children: r[name].tree};
+                    if (name === "") {
+                        obj.name = "Root"
+                    }
+                    r.tree.push(obj)
+                    tree = tree;  // make the reactivity work
+                }
+
+                return r[name];
+            }, level)
+        })
+        tree = tree; // make the reactivity work
+        // console.log(JSON.stringify(tree, null, 4))
+
+    })();
+</script>
+
+<div class="d-flex flex-column mt-2 bg-light border-end" style="max-height: 100vh; overflow-y: scroll">
+    <div>
+        <h2 class="text-center fs-5">Data Sources</h2>
+    </div>
+    <button class="btn btn-primary">Toggle Hidden Entries</button>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="Filter List">
+        <label for="floatingInput">Filter List</label>
+    </div>
+
+    <Tree {tree} let:node>
+        <div class="name">{node.name}</div>
+    </Tree>
+</div>

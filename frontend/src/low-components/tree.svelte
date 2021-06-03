@@ -6,7 +6,7 @@
 {#each tree as _node, i}
   <TreeNode node={_node} index={i} let:node>
     <slot {node}>
-      <div class="name">{node.name}</div>
+      <div class="name">NODE: {node.name}</div>
     </slot>
   </TreeNode>
 {/each}
