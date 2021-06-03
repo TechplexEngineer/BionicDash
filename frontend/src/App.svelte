@@ -109,9 +109,7 @@
 
     <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;border-right: 1px solid #dee2e6">
 
-        <div href="/" class="d-block py-3 mx-auto link-dark text-decoration-none border-bottom" title=""
-             data-bs-toggle="tooltip"
-             data-bs-placement="right" data-bs-original-title="Icon-only">
+        <div class="d-block py-3 mx-auto link-dark text-decoration-none border-bottom" title="Bionic Dashboard">
             <svg class="bi" width="65" height="32">
                 <use xlink:href="#bootstrap"></use>
             </svg>
@@ -120,74 +118,40 @@
 
 
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-            <!--            <li class="nav-item">-->
-            <!--                <a href="#" class="nav-link active py-3 border-bottom" aria-current="page" title=""-->
-            <!--                   data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">-->
-            <!--                    <svg class="bi" width="24" height="24" role="img" aria-label="Home">-->
-            <!--                        <use xlink:href="#home"></use>-->
-            <!--                    </svg>-->
-            <!--                </a>-->
-            <!--            </li>-->
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="PID" data-bs-toggle="tooltip"
-                   data-bs-placement="right" data-bs-original-title="Dashboard">
+                <a href="#" class="nav-link py-3 border-bottom" title="Tuning">
                     <svg class="bi" width="24" height="24">
                         <use xlink:href="#speedometer2"></use>
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                   data-bs-placement="right" data-bs-original-title="Orders">
+                <a href="#" class="nav-link py-3 border-bottom active" title="Data Sources">
                     <svg class="bi" width="24" height="24">
                         <use xlink:href="#table"></use>
                     </svg>
                 </a>
             </li>
             <li>
-                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"
-                   data-bs-placement="right" data-bs-original-title="Products">
+                <a href="#" class="nav-link py-3 border-bottom" title="Dashboards">
                     <svg class="bi" width="24" height="24">
                         <use xlink:href="#grid"></use>
                     </svg>
                 </a>
             </li>
-<!--            <li>-->
-<!--                <a href="#" class="nav-link py-3 border-bottom" title="" data-bs-toggle="tooltip"-->
-<!--                   data-bs-placement="right" data-bs-original-title="Customers">-->
-<!--                    <svg class="bi" width="24" height="24">-->
-<!--                        <use xlink:href="#gear-fill"></use>-->
-<!--                    </svg>-->
-<!--                </a>-->
-<!--            </li>-->
+
         </ul>
         <div class="border-top">
-            <a href="#" class="nav-link py-3 border-bottom align-items-center justify-content-center text-center" title="">
+            <a href="#" class="nav-link py-3 border-bottom align-items-center justify-content-center text-center" title="Settings">
                 <svg class="bi" width="24" height="24">
                     <use xlink:href="#gear-fill"></use>
                 </svg>
             </a>
         </div>
-        <!--        <div class="dropdown border-top">-->
-        <!--            <a href="#"-->
-        <!--               class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"-->
-        <!--               id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">-->
-        <!--                <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">-->
-        <!--            </a>-->
-        <!--            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3" style="">-->
-        <!--                <li><a class="dropdown-item" href="#">New project...</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Settings</a></li>-->
-        <!--                <li><a class="dropdown-item" href="#">Profile</a></li>-->
-        <!--                <li>-->
-        <!--                    <hr class="dropdown-divider">-->
-        <!--                </li>-->
-        <!--                <li><a class="dropdown-item" href="#">Sign out</a></li>-->
-        <!--            </ul>-->
-        <!--        </div>-->
     </div>
 
 
-    <div class="d-flex flex-column mt-2 bg-light" style="max-height: 100vh; overflow-y: scroll">
+    <div class="d-flex flex-column mt-2 bg-light border-end" style="max-height: 100vh; overflow-y: scroll">
         <div>
             <h2 class="text-center fs-5">Data Sources</h2>
         </div>
@@ -204,7 +168,7 @@
 
 
     </div>
-    <div class="d-flex flex-column bg-warning">
+    <div class="d-flex flex-column flex-fill">
         Column
     </div>
 
