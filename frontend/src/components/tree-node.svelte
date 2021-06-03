@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
   }
-  .node .content:hover {
+  .node .content.haschildren:hover {
     cursor: pointer;
   }
   .node .content .button {
@@ -39,6 +39,7 @@
 <div class="node">
   <div
     class="content"
+    class:haschildren={node.children.length}
     on:click={() => {
       showChildren = !showChildren;
     }}>
@@ -53,7 +54,7 @@
     {/if}
     <slot {node} />
   </div>
-  {#if node.children && showChildren}
+  {#if node.children.length && showChildren}
     <div class="children" transition:slide|local>
       {#each node.children as _node, i}
         <svelte:self node={_node} index={i} let:node>
