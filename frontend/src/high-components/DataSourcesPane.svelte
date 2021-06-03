@@ -3,6 +3,8 @@
 
     $: tree = [];
 
+    let filter = "";
+
     (async () => {
         let keys = await window.backend.Client.GetSnapshot("");
         keys = keys.sort()
@@ -12,7 +14,10 @@
             path.key.split('/').reduce((r, name, i, a) => {
                 if (!r[name]) {
                     r[name] = {tree: []};
-                    const obj = {name, children: r[name].tree};
+                    const obj = {
+                        name,
+                        path: path.key,
+                        children: r[name].tree};
                     if (name === "") {
                         obj.name = "Root"
                     }
@@ -33,13 +38,15 @@
     <div>
         <h2 class="text-center fs-5">Data Sources</h2>
     </div>
-    <button class="btn btn-primary">Toggle Hidden Entries</button>
+<!--    <button class="btn btn-primary">Toggle Hidden Entries</button>-->
     <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Filter List">
+        <input type="email" class="form-control" id="floatingInput" placeholder="Filter List" bind:value={filter}>
         <label for="floatingInput">Filter List</label>
     </div>
 
     <Tree {tree} let:node>
-        <div class="name">{node.name}</div>
+        {#if node.path.includes(filter)}
+        <div class="name" title="{node.path}">{node.name}</div>
+        {/if}
     </Tree>
 </div>
