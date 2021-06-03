@@ -7,6 +7,7 @@ import image from '@rollup/plugin-image';
 import babel from 'rollup-plugin-babel';
 // import polyfill from 'rollup-plugin-polyfill';
 import css from "rollup-plugin-css-only";
+import copy from 'rollup-plugin-copy'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -52,6 +53,12 @@ export default {
 			emitCss: true
 		}),
 		css({ output: 'bundle.css' }),
+		copy({
+			targets: [
+				{ src: 'node_modules/bootstrap-icons/font/fonts/**', dest: 'public/build/fonts' },
+
+			]
+		}),
 
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
