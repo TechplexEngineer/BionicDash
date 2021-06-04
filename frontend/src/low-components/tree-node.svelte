@@ -62,7 +62,7 @@
         {:else}
 <!--            <div class="spacer"/>-->
         {/if}
-        <div style="margin-left: 20px">
+        <div style="margin-left: 20px; width: 100%">
             <slot {node}/>
         </div>
     </div>

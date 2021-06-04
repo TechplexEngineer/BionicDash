@@ -7,16 +7,31 @@
 
     (async () => {
         let keys = await window.backend.Client.GetSnapshot("");
-        keys = keys.sort()
+
+
+        // sort by path "/SmartDashboard/drivetrain" to keep the list consistent between refreshes
+        keys = keys.sort((a,b) => {
+            if (a.key < b.key) {
+                return -1
+            } else if (a.key > b.key) {
+                return 1
+            }
+            return 0
+        })
         let level = {tree};
 
         keys.forEach(path => {
             path.key.split('/').reduce((r, name, i, a) => {
+                // eliminate the root node to have more horizontal space
+                if (name === "") {
+                    return r
+                }
                 if (!r[name]) {
                     r[name] = {tree: []};
                     const obj = {
                         name,
                         path: path.key,
+                        value: path.value,
                         children: r[name].tree};
                     if (name === "") {
                         obj.name = "Root"
@@ -28,7 +43,7 @@
                 return r[name];
             }, level)
         })
-        tree = tree; // make the reactivity work
+        // tree = tree; // make the reactivity work
         // console.log(JSON.stringify(tree, null, 4))
 
     })();
@@ -46,7 +61,9 @@
 
     <Tree {tree} let:node>
         {#if node.path.includes(filter)}
-        <div class="name" title="{node.path}">{node.name}</div>
+        <div class="name" title="{node.path}">{node.name}
+            <div class="d-inline float-end">{node.value}</div>
+        </div>
         {/if}
     </Tree>
 </div>
