@@ -51,17 +51,20 @@
          on:click={() => {
             showChildren = !showChildren;
          }}
+         style="overflow: hidden; position: relative"
     >
         {#if node.children.length}
-            <div class="button" class:active={showChildren}>
+            <div class="button" class:active={showChildren} style="margin-right: -20px; position: absolute;">
                 <svg focusable="false" viewBox="0 0 24 24">
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
                 </svg>
             </div>
         {:else}
-            <div class="spacer"/>
+<!--            <div class="spacer"/>-->
         {/if}
-        <slot {node}/>
+        <div style="margin-left: 20px">
+            <slot {node}/>
+        </div>
     </div>
     {#if node.children.length && showChildren}
         <div class="children" transition:slide|local>
