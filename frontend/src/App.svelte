@@ -5,6 +5,7 @@
     let activeId;
     import 'bootstrap/dist/css/bootstrap.min.css';
     import 'bootstrap-icons/font/bootstrap-icons.css';
+    import Graph from "./high-components/Graph.svelte";
 </script>
 
 <main class="d-flex" style="height: 100vh">
@@ -18,8 +19,8 @@
 
 
 
-    <div class="d-flex flex-column flex-fill">
-        Column
+    <div class="d-flex flex-column flex-fill p-3">
+        <Graph/>
     </div>
 
 

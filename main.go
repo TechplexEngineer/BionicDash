@@ -36,7 +36,7 @@ func main() {
 		Colour: "#131313",
 	})
 
-	client, err := frcntgo.InitClient()
+	client, err := frcntgo.NewClientLocalhost()
 	if err != nil {
 		panic(err)
 	}
