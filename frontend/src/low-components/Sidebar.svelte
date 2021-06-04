@@ -24,6 +24,17 @@
     ];
     export let activeId = buttons[0].id;
 
+    function getClickHandler(button) {
+        return (event) => {
+            console.log("handleClick", event, button)
+            if (activeId === button.id) {
+                activeId = -1;
+            } else {
+                activeId = button.id
+            }
+        }
+    }
+
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -50,7 +61,7 @@
             <button class="nav-link py-3 border-bottom w-100"
                class:active={button.id === activeId}
                title={button.title}
-               on:click={() => {activeId = button.id}}
+               on:click={getClickHandler(button)}
             >
                 <i class="bi bi-{button.icon} fs-3 text-body"></i>
             </button>
