@@ -12,15 +12,17 @@
 
         keys.forEach(path => {
             path.key.split('/').reduce((r, name, i, a) => {
+                if (name === "") {
+                    return r
+                }
                 if (!r[name]) {
                     r[name] = {tree: []};
                     const obj = {
                         name,
                         path: path.key,
-                        children: r[name].tree};
-                    if (name === "") {
-                        obj.name = "Root"
-                    }
+                        value: path.value,
+                        children: r[name].tree
+                    };
                     r.tree.push(obj)
                     tree = tree;  // make the reactivity work
                 }
@@ -45,8 +47,13 @@
     </div>
 
     <Tree {tree} let:node>
-        {#if node.path.includes(filter)}
-        <div class="name" title="{node.path}">{node.name}</div>
+        {#if node.path.toLowerCase().includes(filter.toLowerCase())}
+        <div class="name" title="{node.path}">
+            {node.name}
+            <div class="float-end">
+                {node.value}
+            </div>
+        </div>
         {/if}
     </Tree>
 </div>
