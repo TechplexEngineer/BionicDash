@@ -7,7 +7,14 @@
 
     (async () => {
         let keys = await window.backend.Client.GetSnapshot("");
-        keys = keys.sort()
+        keys = keys.sort((a,b) => {
+            if (a.key < b.key) {
+                return -1
+            } else if (a.key > b.key) {
+                return 1
+            }
+            return 0
+        })
         let level = {tree};
 
         keys.forEach(path => {
@@ -19,10 +26,15 @@
                     r[name] = {tree: []};
                     const obj = {
                         name,
+                        value: "",
                         path: path.key,
-                        value: path.value,
                         children: r[name].tree
                     };
+                    // console.log(path.key)
+                    if (path.key.endsWith(name)) {
+                        obj.value = path.value
+                    }
+
                     r.tree.push(obj)
                     tree = tree;  // make the reactivity work
                 }
