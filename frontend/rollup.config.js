@@ -56,6 +56,7 @@ export default {
 		copy({
 			targets: [
 				{ src: 'node_modules/bootstrap-icons/font/fonts/**', dest: 'public/build/fonts' },
+				{ src: 'node_modules/bootstrap-icons/font/fonts/**', dest: 'public/build/fonts' },
 
 			]
 		}),

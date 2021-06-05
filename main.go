@@ -28,12 +28,14 @@ func main() {
 	log.Printf("HERE?")
 
 	app := wails.CreateApp(&wails.AppConfig{
-		Width:  1024,
-		Height: 768,
-		Title:  "BionicDash",
-		JS:     js,
-		CSS:    css,
-		Colour: "#131313",
+		Width:            1024,
+		Height:           768,
+		Title:            "BionicDash",
+		JS:               js,
+		CSS:              css,
+		HTML:             "https://google.com",
+		Colour:           "#131313",
+		DisableInspector: false,
 	})
 
 	client, err := frcntgo.NewClientLocalhost()
