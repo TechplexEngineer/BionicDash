@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-arm64:
+    strategy:
+      matrix:
+        os:
+          - "win"
+          - "mac"
+          - "linux"
+        include:
+          # includes a new variable of wails-cmd
+          # for the matrix leg matching the os
+          - os: win
+            wails-cmd: wails build -d -x windows/amd64
+            bin-name: bionicdash-win-amd64-${{github.sha}}.exe
+          - os: mac
+            wails-cmd: wails build -d -x darwin/amd64 -p
+            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
+          - os: linux
+            wails-cmd: wails build -d
+            bin-name: bionicdash-linux-amd64-${{github.sha}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - name: Set up Wails
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+
+      - name: Build
+        run: ${{matrix.wails-cmd}}
+
+      - name: Upload Build Artifacts - arm64
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{matrix.bin-name}}
+          path: build/*
+
