@@ -3,19 +3,13 @@ package main
 import (
 	_ "embed"
 	"fmt"
-	"github.com/techplexengineer/frc-networktables-go"
-	"github.com/wailsapp/wails"
 	"log"
 	"time"
+
+	"github.com/techplexengineer/gontcore"
+	"github.com/wailsapp/wails"
+	"github.com/wailsapp/wails/lib/logger"
 )
-
-func basic() string {
-	return "World!"
-}
-
-func fred() string {
-	return "World!"
-}
 
 //go:embed frontend/public/build/bundle.js
 var js string
@@ -33,32 +27,26 @@ func main() {
 		Title:            "BionicDash",
 		JS:               js,
 		CSS:              css,
-		HTML:             "https://google.com",
 		Colour:           "#131313",
-		DisableInspector: false,
+		DisableInspector: true,
 	})
 
-	client, err := frcntgo.NewClientLocalhost()
+	logger.SetLogLevel("error")
+
+	//@todo need a way to restart the connection
+	ntClient, _, err := goNTCore.NewClient("localhost", "Test Client", nil)
 	if err != nil {
 		panic(err)
 	}
 
 	time.Sleep(2 * time.Second)
 
-	isRed, err := client.GetBoolean("/bool")
-	if err != nil {
-		fmt.Printf("%s", err)
-	} else {
-		fmt.Printf("---------------------------------------is Red: %v\n", isRed)
-	}
-	_ = app
+	isRed := ntClient.GetBoolean("/bool", false)
 
-	//for {
-	//	time.Sleep(5 * time.Second)
-	//}
+	fmt.Printf("---------------------------------------is Red: %v\n", isRed)
 
-	app.Bind(client)
-	app.Bind(basic)
-	app.Bind(fred)
-	app.Run()
+	app.Bind(ntClient)
+
+	err = app.Run()
+	log.Printf("app hit an error: %s", err)
 }
