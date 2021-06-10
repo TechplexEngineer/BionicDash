@@ -39,6 +39,9 @@ jobs:
       - name: Set up Wails
         run: go get -u github.com/wailsapp/wails/cmd/wails
 
+      - name: Install Wails Dependencies
+        run: sudo apt install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev
+
       - name: Build
         run: ${{matrix.wails-cmd}}
 
