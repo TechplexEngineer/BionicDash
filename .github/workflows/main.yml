@@ -19,13 +19,13 @@ jobs:
           # includes a new variable of wails-cmd
           # for the matrix leg matching the os
           - os: win
-            wails-cmd: wails build -d -x windows/amd64
+            wails-cmd: wails build -d -x windows/amd64 -verbose
             bin-name: bionicdash-win-amd64-${{github.sha}}.exe
           - os: mac
-            wails-cmd: wails build -d -x darwin/amd64 -p
+            wails-cmd: wails build -d -x darwin/amd64 -p -verbose
             bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
           - os: linux
-            wails-cmd: wails build -d
+            wails-cmd: wails build -d -verbose
             bin-name: bionicdash-linux-amd64-${{github.sha}}
     runs-on: ubuntu-latest
     steps:
