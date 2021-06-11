@@ -3,8 +3,10 @@ import sveltePlugin from 'esbuild-svelte';
 
 // import {buildOptions} from './esbuild.mjs'
 
+const port = 3000
+
 esbuild.serve({
-  port: 3000,
+  port: port,
   servedir: 'public',
 }, {
   entryPoints: ['src/main.js'],
@@ -16,5 +18,7 @@ esbuild.serve({
     ".woff": "file",
     ".woff2": "file",
   }
+}).then(() => {
+  console.log("Server listening on %d", port)
 })
 

@@ -3,4 +3,4 @@ package public
 import "embed"
 
 //go:embed *
-var Public embed.FS
+var Static embed.FS
