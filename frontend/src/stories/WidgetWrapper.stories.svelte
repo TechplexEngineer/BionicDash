@@ -1,6 +1,8 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import BooleanBox from "../widgets/BooleanBox.svelte";
+  import WidgetWrapper from "../widgets/WidgetWrapper.svelte"
+
 
   import { Styles } from 'sveltestrap';
 </script>
@@ -8,19 +10,22 @@
 <Styles/>
 
 <Meta
-  title="Widget/BooleanBox"
-  component={BooleanBox}
+  title="Wrapped/BooleanBox"
+  component={WidgetWrapper}
   argTypes={{
     // state: { control: "boolean" },
     // title: { control: "text" },
     trueColor: { control: "color" },
     falseColor: { control: "color" },
+    onExpanded: { action: 'expanded' }
   }}
 
 />
 
 <Template let:args>
-  <BooleanBox {...args} />
+	<WidgetWrapper {...args} on:expanded={args.onExpanded}>
+		<BooleanBox {...args} />
+	</WidgetWrapper>
 </Template>
 
 <Story
