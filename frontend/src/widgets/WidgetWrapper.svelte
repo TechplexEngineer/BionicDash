@@ -33,7 +33,7 @@
 <!-- Catch the events no matter where it happens -->
 <svelte:window on:mouseup={stopExpand} on:mousemove={expand} />
 
-<div class="card" style="width: {widthPx}px; height: {heightPx}px;">
+<div class="card bb-ww" style="width: {widthPx}px; height: {heightPx}px;">
     <div class="card-header text-center">
 		TITLE
     </div>
@@ -56,5 +56,8 @@
         position: absolute;
         right: 0;
         bottom: 0;
+    }
+    .bb-ww {
+        overflow-y: hidden;
     }
 </style>

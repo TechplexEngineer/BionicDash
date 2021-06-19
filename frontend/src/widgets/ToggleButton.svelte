@@ -1,5 +1,6 @@
 <script>
 	export let title = "BUTTON";
+	export let state = false;
 
 
 	import { createEventDispatcher } from 'svelte';
@@ -10,7 +11,10 @@
     }
 </script>
 
-<button class="btn btn-primary toggle-button" on:click={clicked}>{title}</button>
+<button class="btn btn-primary toggle-button"
+		class:btn-primary={state}
+		class:btn-outline-primary={!state}
+		on:click={clicked}>{title}</button>
 
 <style>
 	.toggle-button {
