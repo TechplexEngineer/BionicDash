@@ -5,6 +5,7 @@
 	// export let placeholder = ""; // floating does not support placeholder
 
 
+	// We need a unique id so the floating text will works
 	//src https://stackoverflow.com/a/1349426/429544
     function makeid(length) {
         let result             = '';

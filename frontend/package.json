@@ -3,23 +3,11 @@
   "author": "Blake Bourque<techplex.engineer@gmail.com>",
   "scripts": {
     "build": "node esbuild.mjs",
-    "serve": "node esbuild-serve.mjs",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "serve": "node esbuild-serve.mjs"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.5",
-    "@storybook/addon-actions": "^6.2.9",
-    "@storybook/addon-essentials": "^6.2.9",
-    "@storybook/addon-links": "^6.2.9",
-    "@storybook/addon-svelte-csf": "^1.1.0",
-    "@storybook/svelte": "^6.2.9",
-    "babel-loader": "^8.2.2",
-    "core-js": "^3.6.5",
     "esbuild": "^0.12.8",
-    "esbuild-svelte": "^0.5.1",
-    "svelte": "^3.38.2",
-    "svelte-loader": "^3.1.1"
+    "esbuild-svelte": "^0.5.1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
