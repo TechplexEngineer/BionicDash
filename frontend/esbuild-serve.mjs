@@ -9,6 +9,7 @@ esbuild.serve({
   port: port,
   servedir: 'public',
 }, {
+  sourcemap: true,
   entryPoints: ['src/main.js'],
   bundle: true,
   outfile: 'public/build/bundle.js',
