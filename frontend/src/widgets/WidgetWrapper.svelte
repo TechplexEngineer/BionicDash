@@ -6,6 +6,9 @@
 	export let resizeable = true;
     export let widthPx = 150;
     export let heightPx = 150;
+    export let title = "DEFAULT TITLE";
+
+
     let expanding = false;
     let initial = {x:0,y:0,width:0,height:0};
     function startExpand(event) {
@@ -33,12 +36,14 @@
 <!-- Catch the events no matter where it happens -->
 <svelte:window on:mouseup={stopExpand} on:mousemove={expand} />
 
-<div class="card bb-ww" style="width: {widthPx}px; height: {heightPx}px;">
+<div class="card" style="width: {widthPx}px; height: {heightPx}px; margin: 5px">
     <div class="card-header text-center">
-		TITLE
+        {title}
     </div>
-    <div class="card-body">
-        <slot></slot>
+    <div class="card-body h-75">
+        <div class="overflow-scroll h-100">
+            <slot></slot>
+        </div>
         {#if resizeable}
         <i class="bi bi-filter resize-handle"
            on:mousedown={startExpand}
@@ -56,8 +61,5 @@
         position: absolute;
         right: 0;
         bottom: 0;
-    }
-    .bb-ww {
-        overflow-y: hidden;
     }
 </style>
