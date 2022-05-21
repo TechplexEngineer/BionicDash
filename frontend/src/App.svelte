@@ -60,14 +60,14 @@
 
 </script>
 
-<main class="d-flex" style="height: 100vh">
+<main class="d-flex" style="min-height: 100vh; overflow: hidden">
 
     <Sidebar bind:activeId></Sidebar>
 
     {#if activeId == 0}
         <DataSourcesPane></DataSourcesPane>
 
-        <div class="d-flex flex-column flex-fill p-3">
+        <div class="d-flex flex-column flex-fill p-3 ">
             <ul class="nav nav-tabs">
                 {#each tabs as tab, idx}
                     <li class="nav-item">
@@ -75,9 +75,16 @@
                     </li>
                 {/each}
             </ul>
-            <div class="d-flex flex-wrap position-relative">
+            <div class="position-relative" style="border: 1px solid black; overflow: scroll; height: 1000px">
                 {#each activeTabMetadata as widget}
-                    <WidgetWrapper title={widget.name} widthPx={widget.Size[0]*100} heightPx={widget.Size[1]*100}>
+                    <WidgetWrapper
+                            title={widget.name}
+                            widthPx={widget.Size[0]*100}
+                            heightPx={widget.Size[1]*100}
+
+                            leftPx={widget.Position[0]*100}
+                            topPx={widget.Position[1]*100}
+                    >
                         {#if widget.PreferredComponent == "Number Slider"}
                             <NumberSlider />
                         {:else if widget.PreferredComponent == "Toggle Button"}
