@@ -18,10 +18,10 @@ jobs:
             wails-cmd: wails build -platform windows/amd64 -v 2
             bin-name: bionicdash-win-amd64-${{github.sha}}.exe
             runs-on: ubuntu-20.04
-#          - os: mac
-#            wails-cmd: wails build -platform darwin/amd64 -v 2
-#            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
-#            runs-on: macos-11
+          - os: mac
+            wails-cmd: wails build -platform darwin/amd64 -v 2
+            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
+            runs-on: macos-11
           - os: linux
             wails-cmd: wails build -platform linux/amd64  -v 2
             bin-name: bionicdash-linux-amd64-${{github.sha}}
