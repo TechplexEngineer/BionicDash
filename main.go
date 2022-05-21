@@ -14,6 +14,9 @@ import (
 //go:embed frontend/dist
 var assets embed.FS
 
+//Version will be injected at compile time with go build -ldflags="-X 'main.Version=v1.0.0'"
+var Version = "" // emptystring translates to development
+
 func main() {
 	if err := run(); err != nil {
 		log.Printf("Error %s", err)
@@ -22,7 +25,7 @@ func main() {
 
 func run() error {
 	// Create an instance of the app structure
-	app := NewApp()
+	app := NewApp(Version)
 
 	//@todo make this retry if there is an error
 	ntClient, _, err := goNTCore.NewClient("localhost", "BionicDash", nil)

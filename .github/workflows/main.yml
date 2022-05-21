@@ -26,9 +26,11 @@ jobs:
             wails-cmd: wails build -platform linux/amd64  -v 2
             bin-name: bionicdash-linux-amd64-${{github.sha}}
             runs-on: ubuntu-20.04
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.runs-on}}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # include tags for semantic-version
 
       - name: Set up Go
         uses: actions/setup-go@v2
@@ -44,8 +46,32 @@ jobs:
       - name: Check Wails Install
         run: wails doctor
 
+      - uses: paulhatch/semantic-version@v4.0.2
+        id: version
+        with:
+          # The prefix to use to identify tags
+          tag_prefix: "v"
+          # A string which, if present in a git commit, indicates that a change represents a
+          # major (breaking) change, supports regular expressions wrapped with '/'
+          # major_pattern: "(MAJOR)"
+          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          # minor_pattern: "(MINOR)"
+          # A string to determine the format of the version output
+          #"${major}.${minor}.${patch}-prerelease${increment}"
+          format: "${major}.${minor}.${patch}-pre${increment}"
+          # Optional path to check for changes. If any changes are detected in the path the
+          # 'changed' output will true. Enter multiple paths separated by spaces.
+          # change_path: "src/my-service"
+          # Named version, will be used as suffix for name version tag
+          # namespace: my-service
+          # Indicate whether short tags like 'v1' should be supported. If false only full
+          # tags like 'v1.0.0' will be recognized.
+          short_tags: true
+          # If this is set to true, *every* commit will be treated as a new version.
+          bump_each_commit: false
+
       - name: Build
-        run: ${{matrix.wails-cmd}}
+        run: ${{matrix.wails-cmd}} -ldflags="-X 'main.Version=${{ steps.version.outputs.version }}'"
 
       - name: Upload Build Artifacts - ${{matrix.bin-name}}
         uses: actions/upload-artifact@v2
