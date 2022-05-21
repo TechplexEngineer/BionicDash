@@ -19,13 +19,13 @@ jobs:
           # includes a new variable of wails-cmd
           # for the matrix leg matching the os
           - os: win
-            wails-cmd: wails build -d -x windows/amd64 -verbose
+            wails-cmd: wails build -platform windows/amd64 -v 2
             bin-name: bionicdash-win-amd64-${{github.sha}}.exe
           - os: mac
-            wails-cmd: wails build -d -x darwin/amd64 -p -verbose
+            wails-cmd: wails build -platform darwin/amd64 -v 2
             bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
           - os: linux
-            wails-cmd: wails build -d -verbose
+            wails-cmd: wails build -platform linux/amd64  -v 2
             bin-name: bionicdash-linux-amd64-${{github.sha}}
     runs-on: ubuntu-latest
     steps:
@@ -34,10 +34,10 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: 1.16
+          go-version: 1.18
 
       - name: Set up Wails
-        run: go get -u github.com/wailsapp/wails/cmd/wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       - name: Install Wails Dependencies
         run: sudo apt install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev
@@ -45,7 +45,7 @@ jobs:
       - name: Build
         run: ${{matrix.wails-cmd}}
 
-      - name: Upload Build Artifacts - arm64
+      - name: Upload Build Artifacts - ${{matrix.bin-name}}
         uses: actions/upload-artifact@v2
         with:
           name: ${{matrix.bin-name}}

@@ -28,14 +28,15 @@ To do development on BionicDash a number of dependencies must be installed:
     - Recommend go 1.16 or greater (Debian repos have 1.13 which is starting to get old) Download from https://golang.org/dl/
 
 - Wails
-    - `go get -u github.com/wailsapp/wails/cmd/wails`
-    - See: https://wails.app/gettingstarted/installing/
+    - `go install github.com/wailsapp/wails/v2/cmd/wails@latest`
+    - See: https://wails.io/docs/gettingstarted/installation
     
 - Node/NPM
     - NodeJs v14
     
 ### Building for Release
-@todo for now see https://wails.app/reference/cli/#build
+To build a redistributable, production mode package, use `wails build`.
+https://wails.io/docs/reference/cli#build
 
 ### Code Style
 Go code should be run through `go fmt` 

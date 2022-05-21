@@ -43,8 +43,8 @@
         height: 100%;
     }
 
-    :global(body, html, div#root) {
-        height: 100%
-    }
+    /*:global(body, html, div#root) {*/
+    /*    height: 100%*/
+    /*}*/
 
 </style>

@@ -16,8 +16,14 @@
 		width: 100%;
 	}
 
-	:global(body, html, div#root) {
+	:global(body) {
         height: 100%
-    }
+  }
+	:global(html) {
+        height: 100%
+  }
+	:global(div#root) {
+        height: 100%
+  }
 
 </style>

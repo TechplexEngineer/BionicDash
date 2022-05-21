@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {slide} from "svelte/transition";
 
     export let node;
@@ -59,18 +59,20 @@
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
                 </svg>
             </div>
+            <div style="margin-left: 20px;width: 100%">
+                <slot {node} leaf={false}/>
+            </div>
         {:else}
-<!--            <div class="spacer"/>-->
+            <div style="margin-left: 20px;width: 100%">
+                <slot {node} leaf={true}/>
+            </div>
         {/if}
-        <div style="margin-left: 20px;width: 100%">
-            <slot {node}/>
-        </div>
     </div>
     {#if node.children.length && showChildren}
         <div class="children" transition:slide|local>
             {#each node.children as _node, i}
-                <svelte:self node={_node} index={i} let:node>
-                    <slot {node}/>
+                <svelte:self node={_node} index={i} let:node let:leaf>
+                    <slot {node} {leaf}/>
                 </svelte:self>
             {/each}
         </div>
