@@ -46,7 +46,9 @@ jobs:
         run: wails doctor
 
       - name: Generate Javascript Module interface code
-        run: wails generate module
+        run: |
+          mkdir -p frontend/dist
+          wails generate module
 
       - name: Build
         run: ${{matrix.wails-cmd}}
