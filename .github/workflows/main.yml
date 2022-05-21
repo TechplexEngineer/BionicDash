@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build-arm64:
+  build:
     strategy:
       matrix:
         os:
