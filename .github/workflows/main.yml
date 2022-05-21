@@ -47,7 +47,8 @@ jobs:
 
       - name: Generate Javascript Module interface code
         run: |
-          mkdir -p frontend/dist
+          npm --prefix frontend ci
+          npm --prefix frontend build
           wails generate module
 
       - name: Build
