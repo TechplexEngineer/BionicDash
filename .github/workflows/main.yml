@@ -45,12 +45,6 @@ jobs:
       - name: Check Wails Install
         run: wails doctor
 
-      - name: Generate Javascript Module interface code
-        run: |
-          npm --prefix frontend ci
-          npm --prefix frontend build
-          wails generate module
-
       - name: Build
         run: ${{matrix.wails-cmd}}
 
