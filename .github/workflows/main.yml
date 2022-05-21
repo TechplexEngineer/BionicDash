@@ -12,18 +12,18 @@ jobs:
     strategy:
       matrix:
         os:
-          - "win"
-          - "mac"
+#          - "win"
+#          - "mac"
           - "linux"
         include:
           # includes a new variable of wails-cmd
           # for the matrix leg matching the os
-          - os: win
-            wails-cmd: wails build -platform windows/amd64 -v 2
-            bin-name: bionicdash-win-amd64-${{github.sha}}.exe
-          - os: mac
-            wails-cmd: wails build -platform darwin/amd64 -v 2
-            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
+#          - os: win
+#            wails-cmd: wails build -platform windows/amd64 -v 2
+#            bin-name: bionicdash-win-amd64-${{github.sha}}.exe
+#          - os: mac
+#            wails-cmd: wails build -platform darwin/amd64 -v 2
+#            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
           - os: linux
             wails-cmd: wails build -platform linux/amd64  -v 2
             bin-name: bionicdash-linux-amd64-${{github.sha}}
