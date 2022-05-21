@@ -18,14 +18,17 @@ jobs:
             wails-cmd: wails build -platform windows/amd64 -v 2
             bin-name: bionicdash-win-amd64-${{github.sha}}.exe
             runs-on: ubuntu-20.04
-          - os: mac
-            wails-cmd: wails build -platform darwin/amd64 -v 2
-            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
-            runs-on: macos-11
+            wails-deps: sudo apt install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev nsis
           - os: linux
             wails-cmd: wails build -platform linux/amd64  -v 2
             bin-name: bionicdash-linux-amd64-${{github.sha}}
             runs-on: ubuntu-20.04
+            wails-deps: sudo apt install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev nsis
+          - os: mac
+            wails-cmd: wails build -platform darwin/amd64 -v 2
+            bin-name: bionicdash-osx-amd64-${{github.sha}}.pkg
+            runs-on: macos-11
+            wails-deps: echo "nothing to do"
     runs-on: ${{matrix.runs-on}}
     steps:
       - uses: actions/checkout@v2
@@ -41,7 +44,7 @@ jobs:
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       - name: Install Wails Dependencies
-        run: sudo apt install build-essential libgtk-3-dev libwebkit2gtk-4.0-dev nsis
+        run: ${{matrix.wails-deps}}
 
       - name: Check Wails Install
         run: wails doctor
