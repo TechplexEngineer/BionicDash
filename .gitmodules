@@ -1,3 +1,0 @@
-[submodule "gonetworktables"]
-	path = gonetworktables
-	url = git@github.com:TechplexEngineer/FRC-NetworkTables-Go.git
