@@ -95,6 +95,8 @@ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/tc-hib/winres v0.1.5/go.mod h1:pe6dOR40VOrGz8PkzreVKNvEKnlE8t4yR8A8naL+t7A=
 github.com/techplexengineer/gontcore v0.0.0-20210610021410-52d797c44011 h1:eUaT57sgyKUrHy/el1z7quf5AZbyQ/Avwokj8UYXzOY=
 github.com/techplexengineer/gontcore v0.0.0-20210610021410-52d797c44011/go.mod h1:DbSQj5dl6whSoS5/PuuKL7YuL0mIYjgFiS0GYVchz7g=
+github.com/techplexengineer/gontcore v0.0.0-20220517155029-254d5a24acfe h1:DsEeD/E854hX3cKNwjPe/biFnNQ/7lKVQ6hJrGtMeLY=
+github.com/techplexengineer/gontcore v0.0.0-20220517155029-254d5a24acfe/go.mod h1:N69BwVCMtHRaAH6rnKsIBNc3dQ7f2t1/7AHxcb2XFB4=
 github.com/tidwall/gjson v1.8.0/go.mod h1:5/xDoumyyDNerp2U36lyolv46b3uF/9Bu6OfyQ9GImk=
 github.com/tidwall/match v1.0.3/go.mod h1:eRSPERbgtNPcGhD8UCthc6PmLEQXEWd3PRB5JTxsfmM=
 github.com/tidwall/pretty v1.1.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
