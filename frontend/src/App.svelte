@@ -18,6 +18,8 @@
     import NumberSlider from "./widgets/NumberSlider.svelte";
     import ToggleButton from "./widgets/ToggleButton.svelte";
     import TextBox from "./widgets/TextBox.svelte";
+    import LeftPane from "./low-components/LeftPane.svelte";
+    import ComponentTester from "./low-components/ComponentTester.svelte";
 
     let tabs:string[] = [];
     let entries:Array<storage.SnapShotEntry> = [];
@@ -44,7 +46,7 @@
             return entry
         })).map(extractAttrs) as WidgetAttrs[];
     })(entries, activeTabName);
-    $: console.log(activeTabMetadata)
+    // $: console.log(activeTabMetadata)
 
     const extractAttrs = (w:TreeNode) => {
         let attrs = {
@@ -53,7 +55,7 @@
         w.children.map(c=>{
             attrs[c.name] = c.value.value
         })
-        console.log(attrs)
+        // console.log(attrs)
         return attrs
     }
 
@@ -64,7 +66,7 @@
 
     <Sidebar bind:activeId></Sidebar>
 
-    {#if activeId == 0}
+    {#if activeId === 0}
         <DataSourcesPane></DataSourcesPane>
 
         <div class="d-flex flex-column flex-fill p-3 ">
@@ -85,11 +87,11 @@
                             leftPx={widget.Position[0]*100}
                             topPx={widget.Position[1]*100}
                     >
-                        {#if widget.PreferredComponent == "Number Slider"}
+                        {#if widget.PreferredComponent === "Number Slider"}
                             <NumberSlider />
-                        {:else if widget.PreferredComponent == "Toggle Button"}
+                        {:else if widget.PreferredComponent === "Toggle Button"}
                             <ToggleButton title={widget.name}/>
-                        {:else if widget.PreferredComponent == "Grid Layout"}
+                        {:else if widget.PreferredComponent === "Grid Layout"}
                         <!--    @todo, support grid layout-->
                         {:else} <!-- Default is textbox-->
                             <TextBox title={widget.name}/>
@@ -114,7 +116,11 @@
 
             <!--        <Graph/>-->
         </div>
-    {/if}
+        {:else if activeId === 1}
+        Live Window?
+        {:else if activeId === 2}
+        <ComponentTester/>
+        {/if}
 
 
 </main>

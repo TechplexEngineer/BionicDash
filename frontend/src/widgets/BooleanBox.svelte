@@ -41,6 +41,8 @@
     .boolean-box {
         width: 100%;
         height: 100%;
+        min-width: 10px;
+        min-height: 10px;
     }
 
     /*:global(body, html, div#root) {*/

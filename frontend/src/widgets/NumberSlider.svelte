@@ -47,42 +47,44 @@
 
 </script>
 
-{#if !hideNumbers}
-<div class="row">
-	<div class="col text-center">{min}</div>
-	<div class="col"></div>
-	<div class="col text-center">{(min+median)/2}</div>
-	<div class="col"></div>
-	<div class="col text-center">{median}</div>
-	<div class="col"></div>
-	<div class="col text-center">{(max+median)/2}</div>
-	<div class="col"></div>
-	<div class="col text-center">{max}</div>
-</div>
-{/if}
-<div class="row bb-px">
-	<input type="range" class="form-range" {min} {max} {step} bind:value>
-</div>
-<div class="row">
-	<div class="col"></div>
-	<div class="col text-center">{value}</div>
-	<div class="col"></div>
-</div>
-{#if !hideButtons}
-<div class="row">
-	<div class="col text-start">
-		<button class="btn btn-primary" on:click={()=>{value=min}}>Min ({min})</button>
+<div class="container">
+	{#if !hideNumbers}
+	<div class="row">
+		<div class="col text-center">{min}</div>
+		<div class="col"></div>
+		<div class="col text-center">{(min+median)/2}</div>
+		<div class="col"></div>
+		<div class="col text-center">{median}</div>
+		<div class="col"></div>
+		<div class="col text-center">{(max+median)/2}</div>
+		<div class="col"></div>
+		<div class="col text-center">{max}</div>
 	</div>
-	<div class="col text-center">
-		{#if (min <= 0 && 0 <= max)}
-			<button class="btn btn-primary" on:click={()=>{value=0}}>Zero</button>
-		{/if}
+	{/if}
+	<div class="row bb-px">
+		<input type="range" class="form-range" {min} {max} {step} bind:value>
 	</div>
-	<div class="col text-end">
-		<button class="btn btn-primary" on:click={()=>{value=max}}>Max ({max})</button>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col text-center">{value}</div>
+		<div class="col"></div>
 	</div>
+	{#if !hideButtons}
+	<div class="row">
+		<div class="col text-start">
+			<button class="btn btn-primary" on:click={()=>{value=min}}>Min ({min})</button>
+		</div>
+		<div class="col text-center">
+			{#if (min <= 0 && 0 <= max)}
+				<button class="btn btn-primary" on:click={()=>{value=0}}>Zero</button>
+			{/if}
+		</div>
+		<div class="col text-end">
+			<button class="btn btn-primary" on:click={()=>{value=max}}>Max ({max})</button>
+		</div>
+	</div>
+	{/if}
 </div>
-{/if}
 
 <style>
 	.bb-px {

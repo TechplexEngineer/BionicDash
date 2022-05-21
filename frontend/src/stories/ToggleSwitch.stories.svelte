@@ -1,5 +1,4 @@
 <script>
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import ToggleSwitch from "../widgets/ToggleSwitch.svelte";
 
   import { Styles } from 'sveltestrap';
@@ -9,25 +8,25 @@
 
 <Styles/>
 
-<Meta
-  title="Widget/ToggleSwitch"
-  component={ToggleSwitch}
-  argTypes={{
-    onClicked: { action: 'clicked' }
-  }}
+<!--<Meta-->
+<!--  title="Widget/ToggleSwitch"-->
+<!--  component={ToggleSwitch}-->
+<!--  argTypes={{-->
+<!--    onClicked: { action: 'clicked' }-->
+<!--  }}-->
 
-/>
-
-
-<Template let:args>
-  <ToggleSwitch {...args}  on:clicked={args.onClicked}/>
-</Template>
+<!--/>-->
 
 
+<!--<Template let:args>-->
+  <ToggleSwitch />
+<!--</Template>-->
 
-<Story
-  name="Default"
-  args={{
-  }}
-/>
+
+
+<!--<Story-->
+<!--  name="Default"-->
+<!--  args={{-->
+<!--  }}-->
+<!--/>-->
 

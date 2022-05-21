@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import TreeNode from "./tree-node.svelte";
 
     export let tree = [];

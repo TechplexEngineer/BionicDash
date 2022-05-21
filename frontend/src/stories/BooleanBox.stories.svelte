@@ -1,5 +1,4 @@
 <script>
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import BooleanBox from "../widgets/BooleanBox.svelte";
 
   import { Styles } from 'sveltestrap';
@@ -7,33 +6,33 @@
 
 <Styles/>
 
-<Meta
-  title="Widget/BooleanBox"
-  component={BooleanBox}
-  argTypes={{
-    // state: { control: "boolean" },
-    // title: { control: "text" },
-    trueColor: { control: "color" },
-    falseColor: { control: "color" },
-  }}
+<!--<Meta-->
+<!--  title="Widget/BooleanBox"-->
+<!--  component={BooleanBox}-->
+<!--  argTypes={{-->
+<!--    // state: { control: "boolean" },-->
+<!--    // title: { control: "text" },-->
+<!--    trueColor: { control: "color" },-->
+<!--    falseColor: { control: "color" },-->
+<!--  }}-->
 
-/>
+<!--/>-->
 
-<Template let:args>
-  <BooleanBox {...args} />
-</Template>
+<!--<Template let:args>-->
+  <BooleanBox />
+<!--</Template>-->
 
-<Story
-  name="True"
-  args={{
-    state: true
-  }}
-/>
+<!--<Story-->
+<!--  name="True"-->
+<!--  args={{-->
+<!--    state: true-->
+<!--  }}-->
+<!--/>-->
 
-<Story
-  name="False"
-  args={{
-    state: false
-  }}
-/>
+<!--<Story-->
+<!--  name="False"-->
+<!--  args={{-->
+<!--    state: false-->
+<!--  }}-->
+<!--/>-->
 

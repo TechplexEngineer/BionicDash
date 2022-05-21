@@ -5,7 +5,7 @@
     import * as Client from '../../wailsjs/go/goNTCore/Client.js'
 
     let userInputSearchFilter = "";
-    let userHideMetadata = false; //bound to checkbox, should hide all items that have a dot following a slash eg. Shuffleboard/.metadata
+    let userHideMetadata = true; //bound to checkbox, should hide all items that have a dot following a slash eg. Shuffleboard/.metadata
 
 
     let keys: NTelement[] = [];

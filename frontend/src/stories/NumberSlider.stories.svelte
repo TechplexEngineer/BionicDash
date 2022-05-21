@@ -1,5 +1,4 @@
 <script>
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import NumberSlider from "../widgets/NumberSlider.svelte";
 
   import { Styles } from 'sveltestrap';
@@ -9,25 +8,25 @@
 
 <Styles/>
 
-<Meta
-  title="Widget/NumberSlider"
-  component={NumberSlider}
-  argTypes={{
-    onChanged: { action: 'changed' }
-  }}
+<!--<Meta-->
+<!--  title="Widget/NumberSlider"-->
+<!--  component={NumberSlider}-->
+<!--  argTypes={{-->
+<!--    onChanged: { action: 'changed' }-->
+<!--  }}-->
 
-/>
-
-
-<Template let:args>
-  <NumberSlider {...args}  on:changed={args.onChanged}/>
-</Template>
+<!--/>-->
 
 
+<!--<Template let:args>-->
+  <NumberSlider />
+<!--</Template>-->
 
-<Story
-  name="Default"
-  args={{
-  }}
-/>
+
+
+<!--<Story-->
+<!--  name="Default"-->
+<!--  args={{-->
+<!--  }}-->
+<!--/>-->
 

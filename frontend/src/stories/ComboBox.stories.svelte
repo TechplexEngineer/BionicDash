@@ -1,5 +1,4 @@
 <script>
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import ComboBox from "../widgets/ComboBox.svelte";
 
   import { Styles } from 'sveltestrap';
@@ -9,24 +8,24 @@
 
 <Styles/>
 
-<Meta
-  title="Widget/ComboBox"
-  component={ComboBox}
-  argTypes={{
-  }}
+<!--<Meta-->
+<!--  title="Widget/ComboBox"-->
+<!--  component={ComboBox}-->
+<!--  argTypes={{-->
+<!--  }}-->
 
-/>
-
-
-<Template let:args>
-  <ComboBox {...args} />
-</Template>
+<!--/>-->
 
 
+<!--<Template let:args>-->
+  <ComboBox />
+<!--</Template>-->
 
-<Story
-  name="Default"
-  args={{
-  }}
-/>
+
+
+<!--<Story-->
+<!--  name="Default"-->
+<!--  args={{-->
+<!--  }}-->
+<!--/>-->
 

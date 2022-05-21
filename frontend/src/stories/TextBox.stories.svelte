@@ -1,5 +1,4 @@
 <script>
-  import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import TextBox from "../widgets/TextBox.svelte";
 
   import { Styles } from 'sveltestrap';
@@ -9,25 +8,25 @@
 
 <Styles/>
 
-<Meta
-  title="Widget/TextBox"
-  component={TextBox}
-  argTypes={{
-    onChanged: { action: 'changed' }
-  }}
+<!--<Meta-->
+<!--  title="Widget/TextBox"-->
+<!--  component={TextBox}-->
+<!--  argTypes={{-->
+<!--    onChanged: { action: 'changed' }-->
+<!--  }}-->
 
-/>
-
-
-<Template let:args>
-  <TextBox {...args}  on:changed={args.onChanged}/>
-</Template>
+<!--/>-->
 
 
+<!--<Template let:args>-->
+  <TextBox />
+<!--</Template>-->
 
-<Story
-  name="Default"
-  args={{
-  }}
-/>
+
+
+<!--<Story-->
+<!--  name="Default"-->
+<!--  args={{-->
+<!--  }}-->
+<!--/>-->
 

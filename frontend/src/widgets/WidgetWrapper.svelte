@@ -8,8 +8,8 @@
     export let heightPx = 150;
 
     export let draggable = true;
-    export let topPx = Math.random()*100/10*100;
-    export let leftPx = Math.random()*100/10*50;
+    export let topPx = 0;
+    export let leftPx = 0;
     export let title = "DEFAULT TITLE";
 
     let boundCard;
