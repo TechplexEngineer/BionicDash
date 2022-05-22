@@ -26,7 +26,7 @@
 
     function getClickHandler(button) {
         return (event) => {
-            console.log("handleClick", event, button)
+            // console.log("handleClick", event, button)
             if (activeId === button.id) {
                 activeId = -1;
             } else {

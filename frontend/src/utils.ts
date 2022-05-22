@@ -3,6 +3,7 @@ export type TreeNode = {
     value: NTelement
     path: string
     children: TreeNode[]
+    fullPath?: string
 }
 
 // network table keys
@@ -13,15 +14,25 @@ export type NTelement = {
     "id":            number,  //0,
     "sn":            number,  //1,
     "is_persistent": boolean, //false
+    fullPath?: string //this seems like a hack... Maybe we should have a different type as the first arg to buildTree
 };
 
 // build a tree from the raw list of NTelements
-export const buildTree = (elements: NTelement[]): TreeNode[] => {
+export const buildTree = (elements: NTelement[], prefixToRemove?: string): TreeNode[] => {
     let tree: TreeNode[] = [];
     let level = {tree};
 
+    if (prefixToRemove?.length) {
+        elements.map(entry => {
+            entry.fullPath = entry.key;
+            entry.key = entry.key.substring(prefixToRemove.length);
+            return entry;
+        });
+    }
+    console.log("-------Here----------")
     elements.forEach(path => {
-        path.key.split('/').reduce((r, name, i, a) => {
+        const a = path.key.split('/').reduce((r, name, i, a) => {
+            console.log("reducing:", path.key.split('/'), JSON.stringify(r), name)
             if (name === "") {
                 return r
             }
@@ -30,11 +41,14 @@ export const buildTree = (elements: NTelement[]): TreeNode[] => {
                 const obj = {
                     name,
                     value: {},
-                    path: r[name].tree.length > 0 ? path.key.substring(0, name.length) : path.key,
+                    path:  path.key,
+                    fullPath: path.fullPath,
                     children: r[name].tree
                 } as TreeNode;
+                // console.log(obj)
 
                 if (path.key.endsWith(name)) {
+                    console.log(path, name)
                     obj.value = path
                 }
 
@@ -46,6 +60,8 @@ export const buildTree = (elements: NTelement[]): TreeNode[] => {
             }
             return r[name];
         }, level)
+        console.log("ReducerResult",JSON.stringify(a))
     });
+    console.log(tree)
     return tree;
 }

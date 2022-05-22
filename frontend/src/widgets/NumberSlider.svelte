@@ -29,16 +29,24 @@
      * @type {number}
      */
 	export let step = 0.0625; //default from smart dashboard
+
     /**
 	 * Hide the numberline
      * @type {boolean}
      */
 	export let hideNumbers = false;
+
     /**
 	 * Do not show the min, max and zero buttons
      * @type {boolean}
      */
 	export let hideButtons = false;
+
+	/**
+	 * A title is a label for the widget
+	 * @type {string}
+	 */
+	export let title = "TITLE"
 
 	//@todo there is a case where zero isn't a stop on the slider.
 	// eg. if min or max is not an integer
@@ -48,6 +56,7 @@
 </script>
 
 <div class="container">
+	{title}
 	{#if !hideNumbers}
 	<div class="row">
 		<div class="col text-center">{min}</div>
