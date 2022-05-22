@@ -29,26 +29,32 @@ export const buildTree = (elements: NTelement[], prefixToRemove?: string): TreeN
             return entry;
         });
     }
-    console.log("-------Here----------")
+    // console.log("-------Here----------")
     elements.forEach(path => {
-        const a = path.key.split('/').reduce((r, name, i, a) => {
-            console.log("reducing:", path.key.split('/'), JSON.stringify(r), name)
+        const a = path.key.split('/').reduce((r, name, idx, arr) => {
+            // console.log("reducing:", path.key.split('/'), JSON.stringify(r), name)
             if (name === "") {
                 return r
             }
             if (!r[name]) {
                 r[name] = {tree: []};
+
                 const obj = {
                     name,
                     value: {},
-                    path:  path.key,
-                    fullPath: path.fullPath,
+                    path:  arr.slice(0, idx+1).join("/"),
                     children: r[name].tree
                 } as TreeNode;
-                // console.log(obj)
 
-                if (path.key.endsWith(name)) {
-                    console.log(path, name)
+                if (path.fullPath) {
+                    const fullPathParts = path.fullPath.split("/")
+                    const lastIdx = fullPathParts.lastIndexOf(name)
+                    obj.fullPath = fullPathParts.slice(0, lastIdx+1).join("/").replace("/.metadata","")
+                }
+
+                // if we are processing the last path element
+                if (path.key.endsWith(name)) { //same as idx == arr.length-1
+                    // console.log(path, name)
                     obj.value = path
                 }
 
@@ -60,8 +66,8 @@ export const buildTree = (elements: NTelement[], prefixToRemove?: string): TreeN
             }
             return r[name];
         }, level)
-        console.log("ReducerResult",JSON.stringify(a))
+        // console.log("ReducerResult",JSON.stringify(a))
     });
-    console.log(tree)
+    // console.log(tree)
     return tree;
 }

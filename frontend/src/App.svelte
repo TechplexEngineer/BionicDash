@@ -19,9 +19,14 @@
 
     let tabs:string[] = [];
     let entries:Array<storage.SnapShotEntry> = [];
+    let entryMap:Map<string,storage.SnapShotEntry> = {};
     (async () => {
         tabs = await Client.GetStringArray("/Shuffleboard/.metadata/Tabs", []);
-        entries = await Client.GetSnapshot()
+        entries = await Client.GetSnapshot();
+        entries.map(e=>{
+            entryMap[e.key] = e
+        })
+
     })();
 
     let activeTabIdx = 0;
@@ -33,7 +38,8 @@
         path: string,
         PreferredComponent: string,
         Size: number[],
-        Position: number[]
+        Position: number[],
+        entry: storage.SnapShotEntry
     };
 
     let activeTabMetadata:WidgetAttrs[] = [];
@@ -45,8 +51,13 @@
         });
 
         const tree = buildTree(entriesOnCurrentTab, prefix);
+        // console.log(tree)
 
-        return tree.map(extractAttrs) as WidgetAttrs[];
+        const entryAttrs = tree.map(extractAttrs) as WidgetAttrs[];
+        entryAttrs.map(e=>{
+            e.entry = entryMap[e.fullPath]
+        })
+        return entryAttrs
     })(cloneDeep(entries), activeTabName);
     // $: console.log("activeTabMetadata", activeTabMetadata)
 
@@ -81,7 +92,6 @@
             </ul>
             <div class="position-relative" style="border: 1px solid black; overflow: scroll; height: 1000px">
                 {#each activeTabMetadata as widget}
-                    <!--{console.log(widget)}-->
                     <WidgetWrapper
                             title={widget.name}
                             widthPx={widget.Size[0]*100}
@@ -89,20 +99,29 @@
 
                             leftPx={widget.Position[0]*100}
                             topPx={widget.Position[1]*100}
+
+                            ntKey={widget.fullPath}
+                            ntType={widget.entry?.type}
+
+                            let:value
+                            let:ntKey
                     >
                         {#if widget.PreferredComponent === "Number Slider"}
                             <NumberSlider
                                     title={widget.name}
+                                    value={value}
                             />
                         {:else if widget.PreferredComponent === "Toggle Button"}
                             <ToggleButton
                                     title={widget.name}
+                                    value={value}
                             />
                         {:else if widget.PreferredComponent === "Grid Layout"}
                         <!--    @todo, support grid layout-->
                         {:else} <!-- Default is textbox-->
                             <TextBox
                                     title={widget.name}
+                                    value={value}
                             />
 <!--                            <pre>{JSON.stringify(widget, null, 4)}</pre>-->
                         {/if}

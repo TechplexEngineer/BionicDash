@@ -22,7 +22,7 @@
 </script>
 
 <div class="form-floating">
-  <input type="text" class="form-control" id="floatingInput-{inputId}" placeholder=" ">
+  <input type="text" class="form-control" id="floatingInput-{inputId}" placeholder=" " bind:value={value}>
   <label for="floatingInput-{inputId}">{title}</label>
 </div>
 

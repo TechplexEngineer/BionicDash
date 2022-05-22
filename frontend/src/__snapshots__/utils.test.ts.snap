@@ -1,0 +1,77 @@
+// Vitest Snapshot v1
+
+exports[`buildTree 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "fullPath": "/Shuffleboard/Drivetrain/RF Speed/Size",
+            "name": "Size",
+            "path": "Drivetrain/RF Speed/Size",
+            "value": {
+              "fullPath": "/Shuffleboard/.metadata/Drivetrain/RF Speed/Size",
+              "key": "Drivetrain/RF Speed/Size",
+            },
+          },
+          {
+            "children": [],
+            "fullPath": "/Shuffleboard/Drivetrain/RF uSpeed/Position",
+            "name": "Position",
+            "path": "Drivetrain/RF Speed/Position",
+            "value": {
+              "fullPath": "/Shuffleboard/.metadata/Drivetrain/RF uSpeed/Position",
+              "key": "Drivetrain/RF Speed/Position",
+            },
+          },
+        ],
+        "fullPath": "/Shuffleboard/Drivetrain/RF Speed",
+        "name": "RF Speed",
+        "path": "Drivetrain/RF Speed",
+        "value": {},
+      },
+    ],
+    "fullPath": "/Shuffleboard/Drivetrain",
+    "name": "Drivetrain",
+    "path": "Drivetrain",
+    "value": {},
+  },
+]
+`;
+
+exports[`buildTree without fullPath 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "name": "Size",
+            "path": "Drivetrain/RF Speed/Size",
+            "value": {
+              "key": "Drivetrain/RF Speed/Size",
+            },
+          },
+          {
+            "children": [],
+            "name": "Position",
+            "path": "Drivetrain/RF Speed/Position",
+            "value": {
+              "key": "Drivetrain/RF Speed/Position",
+            },
+          },
+        ],
+        "name": "RF Speed",
+        "path": "Drivetrain/RF Speed",
+        "value": {},
+      },
+    ],
+    "name": "Drivetrain",
+    "path": "Drivetrain",
+    "value": {},
+  },
+]
+`;
